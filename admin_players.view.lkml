@@ -2,6 +2,7 @@ view: admin_players {
   sql_table_name: football.admin_players ;;
 
   dimension: average_draft_position {
+    hidden: yes
     type: number
     sql: ${TABLE}.AverageDraftPosition ;;
   }
@@ -14,7 +15,6 @@ view: admin_players {
       date,
       week,
       month,
-      quarter,
       year
     ]
     sql: ${TABLE}.BirthDate ;;
@@ -31,31 +31,38 @@ view: admin_players {
   }
 
   dimension: college_draft_pick {
+    group_label: "Draft Details"
     type: number
     sql: ${TABLE}.CollegeDraftPick ;;
   }
 
   dimension: college_draft_round {
+    group_label: "Draft Details"
     type: number
     sql: ${TABLE}.CollegeDraftRound ;;
   }
 
   dimension: college_draft_team {
+    group_label: "Draft Details"
+    hidden: yes
     type: string
     sql: ${TABLE}.CollegeDraftTeam ;;
   }
 
   dimension: college_draft_year {
+    group_label: "Draft Details"
     type: number
     sql: ${TABLE}.CollegeDraftYear ;;
   }
 
   dimension: draft_kings_name {
+    hidden: yes
     type: string
     sql: ${TABLE}.DraftKingsName ;;
   }
 
   dimension: draft_kings_player_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.DraftKingsPlayerID ;;
   }
@@ -66,26 +73,36 @@ view: admin_players {
   }
 
   dimension: fan_duel_name {
+    hidden: yes
     type: string
     sql: ${TABLE}.FanDuelName ;;
   }
 
   dimension: fan_duel_player_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.FanDuelPlayerID ;;
   }
 
   dimension: fantasy_position {
+    hidden: yes
     type: string
     sql: ${TABLE}.FantasyPosition ;;
   }
 
   dimension: first_name {
+    hidden: yes
     type: string
     sql: ${TABLE}.FirstName ;;
   }
 
+  dimension: full_name {
+    type: string
+    sql: CONCAT(${first_name},' ',${last_name}) ;;
+  }
+
   dimension: height {
+    group_label:"Dimensions"
     type: string
     sql: ${TABLE}.Height ;;
   }
@@ -101,11 +118,13 @@ view: admin_players {
   }
 
   dimension: last_name {
+    hidden: yes
     type: string
     sql: ${TABLE}.LastName ;;
   }
 
   dimension: number {
+    hidden: yes
     type: number
     sql: ${TABLE}.Number ;;
   }
@@ -113,9 +132,11 @@ view: admin_players {
   dimension: photo_url {
     type: string
     sql: ${TABLE}.PhotoUrl ;;
+    html: <img src="{{value}}" height="100px" width="auto"> ;;
   }
 
   dimension: player_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.PlayerID ;;
   }
@@ -131,22 +152,25 @@ view: admin_players {
   }
 
   dimension: status {
+    label: "Current Status"
     type: string
     sql: ${TABLE}.Status ;;
   }
 
   dimension: team {
+    hidden: yes
     type: string
     sql: ${TABLE}.Team ;;
   }
 
   dimension: weight {
+    group_label:"Dimensions"
     type: number
     sql: ${TABLE}.Weight ;;
   }
 
-  measure: count {
+  measure: count_of_players {
     type: count
-    drill_fields: [fan_duel_name, first_name, draft_kings_name, last_name]
+    drill_fields: [full_name,photo_url,position,team,average_draft_position]
   }
 }

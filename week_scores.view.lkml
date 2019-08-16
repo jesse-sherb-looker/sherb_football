@@ -1,232 +1,349 @@
 view: week_scores {
   sql_table_name: football.week_scores ;;
 
-  dimension: away_score {
-    type: string
-    sql: ${TABLE}.AwayScore ;;
-  }
+ dimension: away_score {
+  type: number
+  sql: ${TABLE}.AwayScore ;;
+}
 
-  dimension: away_score_overtime {
-    type: string
-    sql: ${TABLE}.AwayScoreOvertime ;;
-  }
+measure: average_away_score {
+  type: average
+  sql: ${away_score} ;;
+  value_format_name: decimal_1
+}
 
-  dimension: away_score_quarter1 {
-    type: string
-    sql: ${TABLE}.AwayScoreQuarter1 ;;
-  }
+dimension: away_score_overtime {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.AwayScoreOvertime ;;
+}
 
-  dimension: away_score_quarter2 {
-    type: string
-    sql: ${TABLE}.AwayScoreQuarter2 ;;
-  }
+dimension: away_score_quarter1 {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.AwayScoreQuarter1 ;;
+}
 
-  dimension: away_score_quarter3 {
-    type: string
-    sql: ${TABLE}.AwayScoreQuarter3 ;;
-  }
+measure: average_away_score_quarter_1 {
+  type: average
+  sql: ${away_score_quarter1} ;;
+  value_format_name: decimal_1
+}
 
-  dimension: away_score_quarter4 {
-    type: string
-    sql: ${TABLE}.AwayScoreQuarter4 ;;
-  }
+dimension: away_score_quarter2 {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.AwayScoreQuarter2 ;;
+}
 
-  dimension: away_team {
-    type: string
-    sql: ${TABLE}.AwayTeam ;;
-  }
+measure: average_away_score_quarter_2 {
+  type: average
+  sql: ${away_score_quarter2} ;;
+  value_format_name: decimal_1
+}
 
-  dimension: away_team_id {
-    type: number
-    sql: ${TABLE}.AwayTeamID ;;
-  }
+dimension: away_score_quarter3 {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.AwayScoreQuarter3 ;;
+}
 
-  dimension: away_team_money_line {
-    type: number
-    sql: ${TABLE}.AwayTeamMoneyLine ;;
-  }
+measure: average_away_score_quarter_3 {
+  type: average
+  sql: ${away_score_quarter3} ;;
+  value_format_name: decimal_1
+}
 
-  dimension_group: date {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.Date ;;
-  }
+dimension: away_score_quarter4 {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.AwayScoreQuarter4 ;;
+}
 
-  dimension: forecast_description {
-    type: string
-    sql: ${TABLE}.ForecastDescription ;;
-  }
+measure: average_away_score_quarter_4 {
+  type: average
+  sql: ${away_score_quarter3} ;;
+  value_format_name: decimal_1
+}
 
-  dimension: forecast_temp_high {
-    type: string
-    sql: ${TABLE}.ForecastTempHigh ;;
-  }
+dimension: away_team {
+  type: string
+  sql: ${TABLE}.AwayTeam ;;
+}
 
-  dimension: forecast_temp_low {
-    type: string
-    sql: ${TABLE}.ForecastTempLow ;;
-  }
+dimension: away_team_id {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.AwayTeamID ;;
+}
 
-  dimension: forecast_wind_chill {
-    type: string
-    sql: ${TABLE}.ForecastWindChill ;;
-  }
+dimension: away_team_money_line {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.AwayTeamMoneyLine ;;
+}
 
-  dimension: forecast_wind_speed {
-    type: string
-    sql: ${TABLE}.ForecastWindSpeed ;;
-  }
+dimension_group: date {
+  type: time
+  timeframes: [
+    raw,
+    time,
+    date,
+    week,
+    month,
+    year
+  ]
+  sql: ${TABLE}.Date ;;
+}
 
-  dimension: game_key {
-    type: number
-    sql: ${TABLE}.GameKey ;;
-  }
+dimension: forecast_description {
+  group_label: "Forecast"
+  type: string
+  sql: ${TABLE}.ForecastDescription ;;
+}
 
-  dimension: home_score {
-    type: string
-    sql: ${TABLE}.HomeScore ;;
-  }
+dimension: forecast_temp_high {
+  hidden: yes
+  group_label: "Forecast"
+  type: number
+  sql: ${TABLE}.ForecastTempHigh ;;
+}
 
-  dimension: home_score_overtime {
-    type: string
-    sql: ${TABLE}.HomeScoreOvertime ;;
-  }
+dimension: forecast_temp_low {
+  hidden: yes
+  group_label: "Forecast"
+  type: number
+  sql: ${TABLE}.ForecastTempLow ;;
+}
 
-  dimension: home_score_quarter1 {
-    type: string
-    sql: ${TABLE}.HomeScoreQuarter1 ;;
-  }
+dimension: forecast_temp {
+  group_label: "Forecast"
+  type: number
+  sql: (${forecast_temp_high}+${forecast_temp_low})/2 ;;
+}
 
-  dimension: home_score_quarter2 {
-    type: string
-    sql: ${TABLE}.HomeScoreQuarter2 ;;
-  }
+dimension: forecast_wind_chill {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.ForecastWindChill ;;
+}
 
-  dimension: home_score_quarter3 {
-    type: string
-    sql: ${TABLE}.HomeScoreQuarter3 ;;
-  }
+dimension: forecast_wind_speed {
+  group_label: "Forecast"
+  type: number
+  sql: ${TABLE}.ForecastWindSpeed ;;
+}
 
-  dimension: home_score_quarter4 {
-    type: string
-    sql: ${TABLE}.HomeScoreQuarter4 ;;
-  }
+dimension: game_key {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.GameKey ;;
+}
 
-  dimension: home_team {
-    type: string
-    sql: ${TABLE}.HomeTeam ;;
-  }
+dimension: home_score {
+  type: number
+  sql: ${TABLE}.HomeScore ;;
+}
 
-  dimension: home_team_id {
-    type: number
-    sql: ${TABLE}.HomeTeamID ;;
-  }
+measure: average_home_score {
+  type: average
+  sql: ${home_score} ;;
+  value_format_name: decimal_1
+}
 
-  dimension: home_team_money_line {
-    type: number
-    sql: ${TABLE}.HomeTeamMoneyLine ;;
-  }
+dimension: home_score_overtime {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.HomeScoreOvertime ;;
+}
 
-  dimension: over_under {
-    type: number
-    sql: ${TABLE}.OverUnder ;;
-  }
+dimension: home_score_quarter1 {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.HomeScoreQuarter1 ;;
+}
 
-  dimension: point_spread {
-    type: number
-    sql: ${TABLE}.PointSpread ;;
-  }
+measure: average_home_score_quarter_1 {
+  type: average
+  sql: ${home_score_quarter1} ;;
+  value_format_name: decimal_1
+}
 
-  dimension: score_id {
-    type: number
-    sql: ${TABLE}.ScoreID ;;
-  }
+dimension: home_score_quarter2 {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.HomeScoreQuarter2 ;;
+}
 
-  dimension: season {
-    type: number
-    sql: ${TABLE}.Season ;;
-  }
+measure: average_home_score_quarter_2 {
+  type: average
+  sql: ${home_score_quarter2} ;;
+  value_format_name: decimal_1
+}
 
-  dimension: season_type {
-    type: number
-    sql: ${TABLE}.SeasonType ;;
-  }
+dimension: home_score_quarter3 {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.HomeScoreQuarter3 ;;
+}
 
-  dimension: stadium_details____capacity {
-    type: number
-    sql: ${TABLE}.StadiumDetails____Capacity ;;
-  }
+measure: average_home_score_quarter_3 {
+  type: average
+  sql: ${home_score_quarter3} ;;
+  value_format_name: decimal_1
+}
 
-  dimension: stadium_details____city {
-    type: string
-    sql: ${TABLE}.StadiumDetails____City ;;
-  }
+dimension: home_score_quarter4 {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.HomeScoreQuarter4 ;;
+}
 
-  dimension: stadium_details____country {
-    type: string
-    sql: ${TABLE}.StadiumDetails____Country ;;
-  }
+measure: average_home_score_quarter_4 {
+  type: average
+  sql: ${home_score_quarter4} ;;
+  value_format_name: decimal_1
+}
 
-  dimension: stadium_details____geo_lat {
-    type: number
-    sql: ${TABLE}.StadiumDetails____GeoLat ;;
-  }
+dimension: home_team {
+  type: string
+  sql: ${TABLE}.HomeTeam ;;
+}
 
-  dimension: stadium_details____geo_long {
-    type: number
-    sql: ${TABLE}.StadiumDetails____GeoLong ;;
-  }
+dimension: home_team_id {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.HomeTeamID ;;
+}
 
-  dimension: stadium_details____name {
-    type: string
-    sql: ${TABLE}.StadiumDetails____Name ;;
-  }
+dimension: home_team_money_line {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.HomeTeamMoneyLine ;;
+}
 
-  dimension: stadium_details____playing_surface {
-    type: string
-    sql: ${TABLE}.StadiumDetails____PlayingSurface ;;
-  }
+dimension: over_under {
+  type: number
+  sql: ${TABLE}.OverUnder ;;
+}
 
-  dimension: stadium_details____stadium_id {
-    type: number
-    sql: ${TABLE}.StadiumDetails____StadiumID ;;
-  }
+dimension: point_spread {
+  type: number
+  sql: ${TABLE}.PointSpread ;;
+}
 
-  dimension: stadium_details____state {
-    type: string
-    sql: ${TABLE}.StadiumDetails____State ;;
-  }
+dimension: score_id {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.ScoreID ;;
+}
 
-  dimension: stadium_details____type {
-    type: string
-    sql: ${TABLE}.StadiumDetails____Type ;;
-  }
+dimension: season {
+  type: number
+  sql: ${TABLE}.Season ;;
+}
 
-  dimension: stadium_id {
-    type: number
-    sql: ${TABLE}.StadiumID ;;
-  }
+dimension: season_type {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.SeasonType ;;
+}
 
-  dimension: status {
-    type: string
-    sql: ${TABLE}.Status ;;
-  }
+dimension: stadium_details____capacity {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.StadiumDetails____Capacity ;;
+}
 
-  dimension: week {
-    type: number
-    sql: ${TABLE}.Week ;;
-  }
+dimension: stadium_details____city {
+  group_label: "Stadium Details"
+  label: "City"
+  type: string
+  sql: ${TABLE}.StadiumDetails____City ;;
+}
 
-  measure: count {
-    type: count
-    drill_fields: [stadium_details____name]
-  }
+dimension: stadium_details____country {
+  group_label: "Stadium Details"
+  label: "Country"
+  type: string
+  sql: ${TABLE}.StadiumDetails____Country ;;
+  map_layer_name: countries
+}
+
+dimension: stadium_details____geo_lat {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.StadiumDetails____GeoLat ;;
+}
+
+dimension: stadium_details____geo_long {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.StadiumDetails____GeoLong ;;
+}
+
+dimension: stadium_location {
+  group_label: "Stadium Details"
+  label: "Location"
+  type: location
+  sql_latitude: ${stadium_details____geo_lat} ;;
+  sql_longitude: ${stadium_details____geo_long} ;;
+}
+
+dimension: stadium_details____name {
+  group_label: "Stadium Details"
+  label: "Name"
+  type: string
+  sql: ${TABLE}.StadiumDetails____Name ;;
+}
+
+dimension: stadium_details____playing_surface {
+  group_label: "Stadium Details"
+  label: "Playing Surface"
+  type: string
+  sql: ${TABLE}.StadiumDetails____PlayingSurface ;;
+}
+
+dimension: stadium_details____stadium_id {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.StadiumDetails____StadiumID ;;
+}
+
+dimension: stadium_details____state {
+  group_label: "Stadium Details"
+  label: "State"
+  type: string
+  sql: ${TABLE}.StadiumDetails____State ;;
+  map_layer_name: us_states
+}
+
+dimension: stadium_details____type {
+  group_label: "Stadium Details"
+  label: "Type"
+  type: string
+  sql: ${TABLE}.StadiumDetails____Type ;;
+}
+
+dimension: stadium_id {
+  hidden: yes
+  type: number
+  sql: ${TABLE}.StadiumID ;;
+}
+
+dimension: status {
+  type: string
+  sql: ${TABLE}.Status ;;
+}
+
+dimension: week {
+  type: number
+  sql: ${TABLE}.Week ;;
+}
+
+measure: count {
+  hidden: yes
+  type: count
+  drill_fields: [stadium_details____name]
+}
 }
