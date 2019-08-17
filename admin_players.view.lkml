@@ -171,6 +171,40 @@ view: admin_players {
 
   measure: count_of_players {
     type: count
-    drill_fields: [full_name,photo_url,position,team,average_draft_position]
+    drill_fields: [player_detail*]
+  }
+
+  measure: count_of_rbs {
+    label: "Count of RBs"
+    type: count
+    filters: {
+      field: position
+      value: "RB"
+    }
+    drill_fields: [player_detail*]
+  }
+
+  measure: count_of_wrs {
+    label: "Count of WRs"
+    type: count
+    filters: {
+      field: position
+      value: "WR"
+    }
+    drill_fields: [player_detail*]
+  }
+
+  measure: count_of_qbs {
+    label: "Count of QBs"
+    type: count
+    filters: {
+      field: position
+      value: "QB"
+    }
+    drill_fields: [player_detail*]
+  }
+
+  set: player_detail {
+    fields: [full_name,photo_url,position,team,average_draft_position]
   }
 }

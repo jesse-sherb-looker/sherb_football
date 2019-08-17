@@ -97,16 +97,17 @@ view: projected_stats_adp {
 
   measure: total_fantasy_points {
     group_label: "Standard"
-    label: "Projected Fantasy Points"
+    label: "Fantasy Points"
     type: sum
     sql: ${fantasy_points} ;;
   }
 
   measure: average_fantasy_points {
     group_label: "Standard"
-    label: "Average Projected Fantasy Points"
-    type: sum
+    label: "Average Fantasy Points"
+    type: average
     sql: ${fantasy_points} ;;
+    value_format_name: decimal_0
   }
 
   dimension: fantasy_points_ppr {
@@ -117,14 +118,14 @@ view: projected_stats_adp {
 
   measure: total_fantasy_points_ppr {
     group_label: "PPR"
-    label: "Projected Fantasy Points (PPR)"
+    label: "Fantasy Points (PPR)"
     type: sum
     sql: ${fantasy_points_ppr} ;;
   }
 
   measure: average_fantasy_points_ppr {
     group_label: "PPR"
-    label: "Average Projected Fantasy Points (PPR)"
+    label: "Average Fantasy Points (PPR)"
     type: sum
     sql: ${fantasy_points_ppr} ;;
   }
@@ -195,14 +196,14 @@ view: projected_stats_adp {
 
   measure: total_fantasy_points_ppr_filter {
     group_label: "Filter"
-    label: "Projected Fantasy Points (PPR Filter)"
+    label: "Fantasy Points (PPR Filter)"
     type: sum
     sql: ${fantasy_points_ppr_filter} ;;
   }
 
   measure: average_fantasy_points_ppr_filter {
     group_label: "Filter"
-    label: "Average Projected Fantasy Points (PPR Filter)"
+    label: "Average Fantasy Points (PPR Filter)"
     type: sum
     sql: ${fantasy_points_ppr_filter} ;;
   }
@@ -215,14 +216,14 @@ view: projected_stats_adp {
 
   measure: total_fantasy_points_draft_kings {
     group_label: "Draft Kings"
-    label: "Projected Fantasy Points (DK)"
+    label: "Fantasy Points (DK)"
     type: sum
     sql: ${fantasy_points_draft_kings} ;;
   }
 
   measure: average_fantasy_points_draft_kings {
     group_label: "Draft Kings"
-    label: "Average Projected Fantasy Points (DK)"
+    label: "Average Fantasy Points (DK)"
     type: sum
     sql: ${fantasy_points_draft_kings} ;;
   }
@@ -235,14 +236,14 @@ view: projected_stats_adp {
 
   measure: total_fantasy_points_fan_duel {
     group_label: "Fan Duel"
-    label: "Projected Fantasy Points (FD)"
+    label: "Fantasy Points (FD)"
     type: sum
     sql: ${fantasy_points_fan_duel} ;;
   }
 
   measure: average_fantasy_points_fan_duel {
     group_label: "Fan Duel"
-    label: "Average Projected Fantasy Points (FD)"
+    label: "Average Fantasy Points (FD)"
     type: sum
     sql: ${fantasy_points_fan_duel} ;;
   }
@@ -726,15 +727,29 @@ view: projected_stats_adp {
   }
 
   measure: total_touchdowns {
-    group_label: "Totals"
+    group_label: "Overall"
     type: number
     sql: ${total_rushing_touchdowns}+${total_receiving_touchdowns}+${total_passing_touchdowns} ;;
   }
 
   measure: total_yards {
-    group_label: "Totals"
+    group_label: "Overall"
     type: number
     sql: ${total_rushing_yards}+${total_receiving_yards}+${total_passing_yards};;
+  }
+
+  measure: average_touchdowns {
+    group_label: "Overall"
+    type: average
+    sql:  ${rushing_touchdowns}+${receiving_touchdowns}+${passing_touchdowns} ;;
+    value_format_name: decimal_1
+  }
+
+  measure: average_yards {
+    group_label: "Overall"
+    type: average
+    sql:  ${rushing_yards}+${receiving_yards}+${passing_yards} ;;
+    value_format_name: decimal_1
   }
 
   measure: count {
