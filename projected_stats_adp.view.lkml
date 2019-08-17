@@ -37,7 +37,23 @@ view: projected_stats_adp {
   dimension: average_draft_position_1 {
     hidden: yes
     type: number
-    sql: ${TABLE}.AverageDraftPosition ;;
+    sql: CAST(${TABLE}.AverageDraftPosition as FLOAT64) ;;
+  }
+
+  dimension: average_draft_position_filter_1 {
+    label: "Average Draft Position (ADP)"
+    type: number
+    sql: {% if is_ppr._parameter_value == "'Yes'" %} ${average_draft_position_ppr_1}
+         {% else %} ${average_draft_position_1}
+         {% endif %};;
+  }
+
+  measure: average_draft_position_filter {
+    group_label: "Filter"
+    description: "This relies on the Is PPR filter"
+    label: "Average Draft Position (PPR Filter)"
+    type: average
+    sql: ${average_draft_position_filter_1} ;;
   }
 
   measure: average_draft_position {
@@ -96,14 +112,14 @@ view: projected_stats_adp {
   }
 
   measure: total_fantasy_points {
-    group_label: "Standard"
-    label: "Fantasy Points"
+    group_label: "Overall"
+    label: "Total Fantasy Points"
     type: sum
     sql: ${fantasy_points} ;;
   }
 
   measure: average_fantasy_points {
-    group_label: "Standard"
+    group_label: "Overall"
     label: "Average Fantasy Points"
     type: average
     sql: ${fantasy_points} ;;
@@ -118,7 +134,7 @@ view: projected_stats_adp {
 
   measure: total_fantasy_points_ppr {
     group_label: "PPR"
-    label: "Fantasy Points (PPR)"
+    label: "Total Fantasy Points (PPR)"
     type: sum
     sql: ${fantasy_points_ppr} ;;
   }
@@ -131,6 +147,7 @@ view: projected_stats_adp {
   }
 
   parameter: is_ppr {
+    label: "Is PPR"
     type: string
     allowed_value: {
       label: "Yes"
@@ -140,6 +157,12 @@ view: projected_stats_adp {
       label: "No"
       value: "no"
     }
+  }
+
+  dimension: is_ppr_filter_value {
+    label: "Is PPR Filter Value"
+    type: yesno
+    sql: {{ is_ppr._parameter_value }} = 'yes' ;;
   }
 
   parameter: is_10_or_12 {
@@ -197,6 +220,7 @@ view: projected_stats_adp {
   measure: total_fantasy_points_ppr_filter {
     group_label: "Filter"
     label: "Fantasy Points (PPR Filter)"
+    description: "This relies on the Is PPR filter"
     type: sum
     sql: ${fantasy_points_ppr_filter} ;;
   }
@@ -204,6 +228,7 @@ view: projected_stats_adp {
   measure: average_fantasy_points_ppr_filter {
     group_label: "Filter"
     label: "Average Fantasy Points (PPR Filter)"
+    description: "This relies on the Is PPR filter"
     type: sum
     sql: ${fantasy_points_ppr_filter} ;;
   }
@@ -216,7 +241,7 @@ view: projected_stats_adp {
 
   measure: total_fantasy_points_draft_kings {
     group_label: "Draft Kings"
-    label: "Fantasy Points (DK)"
+    label: "Total Fantasy Points (DK)"
     type: sum
     sql: ${fantasy_points_draft_kings} ;;
   }
@@ -236,7 +261,7 @@ view: projected_stats_adp {
 
   measure: total_fantasy_points_fan_duel {
     group_label: "Fan Duel"
-    label: "Fantasy Points (FD)"
+    label: "Total Fantasy Points (FD)"
     type: sum
     sql: ${fantasy_points_fan_duel} ;;
   }
@@ -755,6 +780,10 @@ view: projected_stats_adp {
   measure: count {
     hidden: yes
     type: count
-    drill_fields: [name]
+    drill_fields: [admin_players.player_details*,stats_details*]
+  }
+
+  set: stats_details {
+    fields: [total_fantasy_points,total_touchdowns,total_yards]
   }
 }

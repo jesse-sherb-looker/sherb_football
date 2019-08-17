@@ -205,6 +205,6 @@ view: admin_players {
   }
 
   set: player_detail {
-    fields: [full_name,photo_url,position,team,average_draft_position]
+    fields: [full_name,photo_url,position,team,average_draft_position,projected_stats_adp.stats_details*]
   }
 }
