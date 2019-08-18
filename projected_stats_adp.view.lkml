@@ -40,6 +40,18 @@ view: projected_stats_adp {
     sql: CAST(${TABLE}.AverageDraftPosition as FLOAT64) ;;
   }
 
+  dimension: approx_average_draft_position {
+    type: number
+    sql: FLOOR(${average_draft_position_1}) ;;
+  }
+
+  dimension: average_draft_pick_tier {
+    type: tier
+    tiers: [0,5,10,15,20,25,30,35,45,50,55,65,75,80,85,90,95,100,110,120,130,140,150,160,170,180,190,200]
+    sql: ${approx_average_draft_position} ;;
+    style: integer
+  }
+
   dimension: average_draft_position_filter_1 {
     label: "Average Draft Position (ADP)"
     type: number
@@ -219,7 +231,7 @@ view: projected_stats_adp {
 
   measure: total_fantasy_points_ppr_filter {
     group_label: "Filter"
-    label: "Fantasy Points (PPR Filter)"
+    label: "Total Fantasy Points (PPR Filter)"
     description: "This relies on the Is PPR filter"
     type: sum
     sql: ${fantasy_points_ppr_filter} ;;
@@ -508,6 +520,47 @@ view: projected_stats_adp {
     label: "Games Played"
     type: number
     sql: ${TABLE}.Played ;;
+  }
+
+  measure: total_games_played {
+    label: "Total Games Played"
+    hidden: yes
+    type: sum
+    sql: ${played} ;;
+  }
+
+  measure: points_per_game_filter {
+    group_label: "Filter"
+    label: "Points Per Game (PPR Filter)"
+    description: "This relies on the Is PPR filter"
+    type: number
+    sql: ${total_fantasy_points_ppr_filter}/NULLIF(${total_games_played},0) ;;
+    value_format_name: decimal_1
+  }
+
+  measure: average_points_per_game_filter {
+    group_label: "Filter"
+    label: "Average Points Per Game (PPR Filter)"
+    description: "This relies on the Is PPR filter"
+    type: average
+    sql: ${fantasy_points_ppr_filter}/NULLIF(${played},0) ;;
+    value_format_name: decimal_1
+  }
+
+  measure: points_per_game {
+    group_label: "Overall"
+    label: "Points Per Game"
+    type: number
+    sql: ${total_fantasy_points}/NULLIF(${total_games_played},0);;
+    value_format_name: decimal_1
+  }
+
+  measure: average_points_per_game {
+    group_label: "Overall"
+    label: "Average Points Per Game"
+    type: average
+    sql: ${fantasy_points}/NULLIF(${played},0) ;;
+    value_format_name: decimal_1
   }
 
   dimension: player_id {
