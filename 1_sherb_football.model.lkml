@@ -3,6 +3,8 @@ connection: "jesse_bigquery"
 include: "*.view.lkml"                       # include all views in this project
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
 
+persist_for: "24 hours"
+
 explore: projected_stats_adp {
   label: "Stats, Odds, and Scores"
   view_label: "Projected Stats"
