@@ -6,6 +6,7 @@ include: "*.view.lkml"                       # include all views in this project
 persist_for: "24 hours"
 
 explore: projected_stats_adp {
+  group_label: "Fantasy Football"
   label: "Stats, Odds, and Scores"
   view_label: "Projected Stats"
   join: admin_players {
