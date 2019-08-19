@@ -830,13 +830,34 @@ view: projected_stats_adp {
     value_format_name: decimal_1
   }
 
+  measure: receiving_targets_per_game {
+    group_label: "Overall"
+    type: number
+    sql: sum(${receiving_targets})/${total_games_played} ;;
+    value_format_name: decimal_1
+  }
+
+  measure: pass_attempts_per_game {
+    group_label: "Overall"
+    type: number
+    sql: sum(${passing_attempts})/${total_games_played} ;;
+    value_format_name: decimal_1
+  }
+
+  measure: rush_attempts_per_game {
+    group_label: "Overall"
+    type: number
+    sql: sum(${rushing_attempts})/${total_games_played} ;;
+    value_format_name: decimal_1
+  }
+
   measure: count {
     hidden: yes
     type: count
-    drill_fields: [admin_players.player_details*,stats_details*]
+    drill_fields: [admin_players.player_details*,projected_stats_adp.stats_details*,stats_2018.stats_details*]
   }
 
   set: stats_details {
-    fields: [total_fantasy_points,total_touchdowns,total_yards]
+    fields: [total_fantasy_points,total_touchdowns,total_yards,receiving_targets_per_game,rush_attempts_per_game,pass_attempts_per_game]
   }
 }

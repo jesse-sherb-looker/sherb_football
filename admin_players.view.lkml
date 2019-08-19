@@ -171,7 +171,7 @@ view: admin_players {
 
   measure: count_of_players {
     type: count
-    drill_fields: [player_detail*]
+    drill_fields: [admin_players.player_details*,projected_stats_adp.stats_details*,stats_2018.stats_details*]
   }
 
   measure: count_of_rbs {
@@ -181,7 +181,7 @@ view: admin_players {
       field: position
       value: "RB"
     }
-    drill_fields: [player_detail*]
+    drill_fields: [admin_players.player_details*,projected_stats_adp.stats_details*,stats_2018.stats_details*]
   }
 
   measure: count_of_wrs {
@@ -191,7 +191,7 @@ view: admin_players {
       field: position
       value: "WR"
     }
-    drill_fields: [player_detail*]
+    drill_fields: [admin_players.player_details*,projected_stats_adp.stats_details*,stats_2018.stats_details*]
   }
 
   measure: count_of_qbs {
@@ -201,10 +201,10 @@ view: admin_players {
       field: position
       value: "QB"
     }
-    drill_fields: [player_detail*]
+    drill_fields: [admin_players.player_details*,projected_stats_adp.stats_details*,stats_2018.stats_details*]
   }
 
-  set: player_detail {
-    fields: [full_name,photo_url,position,team,average_draft_position,projected_stats_adp.stats_details*]
+  set: player_details {
+    fields: [full_name,photo_url,position,team,average_draft_position]
   }
 }
