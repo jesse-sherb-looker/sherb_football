@@ -16,7 +16,7 @@ explore: projected_stats_adp {
   join: admin_teams {
     view_label: "Teams"
     relationship: one_to_one
-    sql_on: ${admin_players.player_id} = ${admin_teams.player_id} ;;
+    sql_on: ${admin_players.team} = ${admin_teams.key} ;;
   }
   join: week_stats {
     view_label: "Weekly Stats"
