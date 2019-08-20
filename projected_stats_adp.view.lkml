@@ -66,6 +66,7 @@ view: projected_stats_adp {
     label: "Average Draft Position (PPR Filter)"
     type: average
     sql: ${average_draft_position_filter_1} ;;
+    value_format_name: decimal_1
   }
 
   measure: average_draft_position {
@@ -538,14 +539,14 @@ view: projected_stats_adp {
     value_format_name: decimal_1
   }
 
-  measure: average_points_per_game_filter {
-    group_label: "Filter"
-    label: "Average Points Per Game (PPR Filter)"
-    description: "This relies on the Is PPR filter"
-    type: average
-    sql: ${fantasy_points_ppr_filter}/NULLIF(${played},0) ;;
-    value_format_name: decimal_1
-  }
+#   measure: average_points_per_game_filter {
+#     group_label: "Filter"
+#     label: "Average Points Per Game (PPR Filter)"
+#     description: "This relies on the Is PPR filter"
+#     type: average
+#     sql: ${fantasy_points_ppr_filter}/NULLIF(${played},0) ;;
+#     value_format_name: decimal_1
+#   }
 
   measure: points_per_game {
     group_label: "Overall"
