@@ -847,7 +847,7 @@ view: projected_stats_adp {
   measure: rush_attempts_per_game {
     group_label: "Overall"
     type: number
-    sql: sum(${rushing_attempts})/NULLIF${total_games_played},0) ;;
+    sql: sum(${rushing_attempts})/NULLIF(${total_games_played},0) ;;
     value_format_name: decimal_1
   }
 
