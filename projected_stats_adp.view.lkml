@@ -539,14 +539,14 @@ view: projected_stats_adp {
     value_format_name: decimal_1
   }
 
-#   measure: average_points_per_game_filter {
-#     group_label: "Filter"
-#     label: "Average Points Per Game (PPR Filter)"
-#     description: "This relies on the Is PPR filter"
-#     type: average
-#     sql: ${fantasy_points_ppr_filter}/NULLIF(${played},0) ;;
-#     value_format_name: decimal_1
-#   }
+  measure: average_points_per_game_filter {
+    group_label: "Filter"
+    label: "Average Points Per Game (PPR Filter)"
+    description: "This relies on the Is PPR filter. Can only be rolled up by Player."
+    type: average
+    sql: ${fantasy_points_ppr_filter}/NULLIF(${played},0) ;;
+    value_format_name: decimal_1
+  }
 
   measure: points_per_game {
     group_label: "Overall"
