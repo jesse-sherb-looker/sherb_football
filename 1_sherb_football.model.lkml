@@ -29,26 +29,26 @@ explore: projected_stats_adp {
     relationship: many_to_one
     sql_on: ${admin_teams.team_id} = ${week_standings.team_id} ;;
   }
-  join: team_week_scores {
-    from: week_scores
-    view_label: "Weekly Scores"
-    relationship: one_to_many
-    sql_on: ${admin_teams.team_id} = ${team_week_scores.home_team_id}
-          AND ${admin_teams.team_id} = ${team_week_scores.away_team_id};;
-  }
+#   join: team_week_scores {
+#     from: week_scores
+#     view_label: "Weekly Scores"
+#     relationship: one_to_many
+#     sql_on: ${admin_teams.team_id} = ${team_week_scores.home_team_id}
+#           AND ${admin_teams.team_id} = ${team_week_scores.away_team_id};;
+#   }
 #   join: away_team_week_scores_2018 {
 #     from: 2018_scores
 #     view_label: "2018 Scores (Away Team)"
 #     relationship: one_to_many
 #     sql_on: ${admin_teams.team_id} = ${away_team_week_scores_2018.away_team_id} ;;
 #   }
-  join: team_week_scores_2018 {
-    from: scores_2018
-    view_label: "2018 Scores"
-    relationship: one_to_many
-    sql_on: ${admin_teams.team_id} = ${team_week_scores_2018.home_team_id}
-          AND ${admin_teams.team_id} = ${team_week_scores_2018.away_team_id};;
-  }
+#   join: team_week_scores_2018 {
+#     from: scores_2018
+#     view_label: "2018 Scores"
+#     relationship: one_to_many
+#     sql_on: ${admin_teams.team_id} = ${team_week_scores_2018.home_team_id}
+#           AND ${admin_teams.team_id} = ${team_week_scores_2018.away_team_id};;
+#   }
   join: stats_2018 {
     view_label: "2018 Season Stats"
     relationship: one_to_one
