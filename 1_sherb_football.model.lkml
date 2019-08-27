@@ -3,7 +3,7 @@ connection: "jesse_bigquery"
 include: "*.view.lkml"                       # include all views in this project
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
 
-persist_for: "120 hours"
+# persist_for: "120 hours"
 
 explore: projected_stats_adp {
   group_label: "Fantasy Football"
@@ -59,4 +59,9 @@ explore: projected_stats_adp {
     relationship: many_to_one
     sql_on: ${admin_teams.team_id} = ${standings_2018.team_id} ;;
   }
+}
+
+explore: dfs_optimizer {
+  label: "DFS Optimizer"
+  from: admin_players
 }
