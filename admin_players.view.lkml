@@ -99,6 +99,11 @@ view: admin_players {
   dimension: full_name {
     type: string
     sql: CONCAT(${first_name},' ',${last_name}) ;;
+    action: {
+      label: "Draft {{ value }}"
+      url: "https://sports.yahoo.com/fantasy/"
+      icon_url: "https://www.yahoo.com/favicon.ico"
+   }
   }
 
   dimension: height {
