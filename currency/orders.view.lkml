@@ -1,7 +1,6 @@
 view: orders {
   sql_table_name: jesseset1.orders ;;
 
-
   dimension: order_id {
     primary_key: yes
     hidden: yes
