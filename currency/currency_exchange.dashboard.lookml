@@ -2,15 +2,6 @@
   title: Currency Exchange
   layout: newspaper
   elements:
-  - name: <img src="https://www.evernote.com/l/An92ua34P1RMpbDC1B4OFhfgQlCKnjekIXYB/image.png"
-      height=70px width=auto>
-    type: text
-    title_text: <img src="https://www.evernote.com/l/An92ua34P1RMpbDC1B4OFhfgQlCKnjekIXYB/image.png"
-      height=70px width=auto>
-    row: 22
-    col: 0
-    width: 24
-    height: 2
   - title: Total Order Value
     name: Total Order Value
     model: currency
