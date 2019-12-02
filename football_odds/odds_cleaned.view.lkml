@@ -1,14 +1,14 @@
 explore: odds_cleaned {
-  always_filter: {
-    filters: {
-      field: primary_book
-      value: "Westgate"
-    }
-    filters: {
-      field: secondary_book
-      value: "Pinnacle"
-    }
-  }
+#   always_filter: {
+#     filters: {
+#       field: primary_book
+#       value: "Westgate"
+#     }
+#     filters: {
+#       field: secondary_book
+#       value: "Pinnacle"
+#     }
+#   }
 }
 
 view: odds_cleaned {
