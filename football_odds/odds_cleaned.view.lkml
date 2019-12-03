@@ -369,7 +369,7 @@ view: odds_cleaned {
         THEN NULL
         WHEN ${TABLE}.home_{{ secondary_book._parameter_value }}_line LIKE '%PK%'
         THEN 0.0
-        ELSE SAFE_CAST(${TABLE}.home_{{ primary_book._parameter_value }}_line as FLOAT64)
+        ELSE SAFE_CAST(${TABLE}.home_{{ secondary_book._parameter_value }}_line as FLOAT64)
         END ;;
   }
 
