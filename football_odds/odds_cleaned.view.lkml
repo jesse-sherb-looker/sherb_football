@@ -190,7 +190,7 @@ view: odds_cleaned {
     group_label: "(2) Primary Book"
     type: number
     sql:
-        CASE WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_line LIKE '%--%'
+        CASE WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_line = '-'
         THEN NULL
         WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_line LIKE '%PK%'
         THEN 0.0
@@ -203,7 +203,7 @@ view: odds_cleaned {
     group_label: "(2) Primary Book"
     type: number
     sql:
-        CASE WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_odds LIKE '%--%'
+        CASE WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_odds = '-'
         THEN NULL
         WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_odds LIKE '%PK%'
         THEN 0.0
@@ -216,7 +216,7 @@ view: odds_cleaned {
     group_label: "(2) Primary Book"
     type: number
     sql:
-        CASE WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_line LIKE '%--%'
+        CASE WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_line = '-'
         THEN NULL
         WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_line LIKE '%PK%'
         THEN 0.0
@@ -228,7 +228,7 @@ view: odds_cleaned {
     group_label: "(2) Primary Book"
     type: number
     sql:
-        CASE WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_odds  LIKE '%--%'
+        CASE WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_odds  = '-'
         THEN NULL
         WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_odds LIKE '%PK%'
         THEN 0.0
@@ -365,7 +365,7 @@ view: odds_cleaned {
     group_label: "(3) Secondary Book"
     type: number
     sql:
-        CASE WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_line LIKE '%--%'
+        CASE WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_line = '-'
         THEN NULL
         WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_line LIKE '%PK%'
         THEN 0.0
@@ -377,7 +377,7 @@ view: odds_cleaned {
     group_label: "(3) Secondary Book"
     type: number
     sql:
-        CASE WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_odds LIKE '%--%'
+        CASE WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_odds = '-'
         THEN NULL
         WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_odds LIKE '%PK%'
         THEN 0.0
@@ -390,7 +390,7 @@ view: odds_cleaned {
     group_label: "(3) Secondary Book"
     type: number
     sql:
-        CASE WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_line LIKE '%--%'
+        CASE WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_line = '-'
         THEN NULL
         WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_line LIKE '%PK%'
         THEN 0.0
@@ -402,7 +402,7 @@ view: odds_cleaned {
     group_label: "(3) Secondary Book"
     type: number
     sql:
-        CASE WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_odds LIKE '%--%'
+        CASE WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_odds = '-'
         THEN NULL
         WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_odds LIKE '%PK%'
         THEN 0.0
