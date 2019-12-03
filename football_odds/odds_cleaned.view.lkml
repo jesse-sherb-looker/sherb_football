@@ -189,25 +189,51 @@ view: odds_cleaned {
   dimension: primary_home_line {
     group_label: "(2) Primary Book"
     type: number
-    sql: CAST(${TABLE}.home_{{ primary_book._parameter_value }}_line as FLOAT64) ;;
+    sql:
+        CASE WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_line LIKE '%--%'
+        THEN NULL
+        WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_line LIKE '%PK%'
+        THEN 0.0
+        ELSE CAST(${TABLE}.home_{{ primary_book._parameter_value }}_line as FLOAT64)
+        END
+        ;;
   }
 
   dimension: primary_home_odds {
     group_label: "(2) Primary Book"
     type: number
-    sql: CAST(${TABLE}.home_{{ primary_book._parameter_value }}_odds as FLOAT64) ;;
+    sql:
+        CASE WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_odds LIKE '%--%'
+        THEN NULL
+        WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_odds LIKE '%PK%'
+        THEN 0.0
+        ELSE CAST(${TABLE}.home_{{ primary_book._parameter_value }}_odds as FLOAT64)
+        END
+        ;;
   }
 
   dimension: primary_away_line {
     group_label: "(2) Primary Book"
     type: number
-    sql: CAST(${TABLE}.away_{{ primary_book._parameter_value }}_line as FLOAT64) ;;
+    sql:
+        CASE WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_line LIKE '%--%'
+        THEN NULL
+        WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_line LIKE '%PK%'
+        THEN 0.0
+        ELSE CAST(${TABLE}.away_{{ primary_book._parameter_value }}_line as FLOAT64)
+        END ;;
   }
 
   dimension: primary_away_odds {
     group_label: "(2) Primary Book"
     type: number
-    sql: CAST(${TABLE}.away_{{ primary_book._parameter_value }}_odds as FLOAT64) ;;
+    sql:
+        CASE WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_odds  LIKE '%--%'
+        THEN NULL
+        WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_odds LIKE '%PK%'
+        THEN 0.0
+        ELSE CAST(${TABLE}.away_{{ primary_book._parameter_value }}_odds as FLOAT64)
+        END ;;
   }
 
   dimension: primary_home_break_even {
@@ -338,26 +364,50 @@ view: odds_cleaned {
   dimension: secondary_home_line {
     group_label: "(3) Secondary Book"
     type: number
-    sql: CAST(${TABLE}.home_{{ primary_book._parameter_value }}_line as FLOAT64) ;;
+    sql:
+        CASE WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_line LIKE '%--%'
+        THEN NULL
+        WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_line LIKE '%PK%'
+        THEN 0.0
+        ELSE CAST(${TABLE}.home_{{ primary_book._parameter_value }}_line as FLOAT64)
+        END ;;
   }
 
   dimension: secondary_home_odds {
     group_label: "(3) Secondary Book"
     type: number
-    sql: CAST(${TABLE}.home_{{ primary_book._parameter_value }}_odds as FLOAT64) ;;
+    sql:
+        CASE WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_odds LIKE '%--%'
+        THEN NULL
+        WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_odds LIKE '%PK%'
+        THEN 0.0
+        ELSE CAST(${TABLE}.home_{{ primary_book._parameter_value }}_odds as FLOAT64)
+        END ;;
     value_format_name: decimal_0
   }
 
   dimension: secondary_away_line {
     group_label: "(3) Secondary Book"
     type: number
-    sql: CAST(${TABLE}.away_{{ primary_book._parameter_value }}_line as FLOAT64) ;;
+    sql:
+        CASE WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_line LIKE '%--%'
+        THEN NULL
+        WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_line LIKE '%PK%'
+        THEN 0.0
+        ELSE CAST(${TABLE}.away_{{ primary_book._parameter_value }}_line as FLOAT64)
+        END ;;
   }
 
   dimension: secondary_away_odds {
     group_label: "(3) Secondary Book"
     type: number
-    sql: CAST(${TABLE}.away_{{ primary_book._parameter_value }}_odds as FLOAT64) ;;
+    sql:
+        CASE WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_odds LIKE '%--%'
+        THEN NULL
+        WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_odds LIKE '%PK%'
+        THEN 0.0
+        ELSE CAST(${TABLE}.away_{{ primary_book._parameter_value }}_odds as FLOAT64)
+        END ;;
     value_format_name: decimal_0
   }
 
