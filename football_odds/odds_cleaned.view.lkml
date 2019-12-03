@@ -194,7 +194,7 @@ view: odds_cleaned {
         THEN NULL
         WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_line LIKE '%PK%'
         THEN 0.0
-        ELSE CAST(${TABLE}.home_{{ primary_book._parameter_value }}_line as FLOAT64)
+        ELSE SAFE_CAST(${TABLE}.home_{{ primary_book._parameter_value }}_line as FLOAT64)
         END
         ;;
   }
@@ -207,7 +207,7 @@ view: odds_cleaned {
         THEN NULL
         WHEN ${TABLE}.home_{{ primary_book._parameter_value }}_odds LIKE '%PK%'
         THEN 0.0
-        ELSE CAST(${TABLE}.home_{{ primary_book._parameter_value }}_odds as FLOAT64)
+        ELSE SAFE_CAST(${TABLE}.home_{{ primary_book._parameter_value }}_odds as FLOAT64)
         END
         ;;
   }
@@ -220,7 +220,7 @@ view: odds_cleaned {
         THEN NULL
         WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_line LIKE '%PK%'
         THEN 0.0
-        ELSE CAST(${TABLE}.away_{{ primary_book._parameter_value }}_line as FLOAT64)
+        ELSE SAFE_CAST(${TABLE}.away_{{ primary_book._parameter_value }}_line as FLOAT64)
         END ;;
   }
 
@@ -232,7 +232,7 @@ view: odds_cleaned {
         THEN NULL
         WHEN ${TABLE}.away_{{ primary_book._parameter_value }}_odds LIKE '%PK%'
         THEN 0.0
-        ELSE CAST(${TABLE}.away_{{ primary_book._parameter_value }}_odds as FLOAT64)
+        ELSE SAFE_CAST(${TABLE}.away_{{ primary_book._parameter_value }}_odds as FLOAT64)
         END ;;
   }
 
@@ -369,7 +369,7 @@ view: odds_cleaned {
         THEN NULL
         WHEN ${TABLE}.home_{{ secondary_book._parameter_value }}_line LIKE '%PK%'
         THEN 0.0
-        ELSE CAST(${TABLE}.home_{{ primary_book._parameter_value }}_line as FLOAT64)
+        ELSE SAFE_CAST(${TABLE}.home_{{ primary_book._parameter_value }}_line as FLOAT64)
         END ;;
   }
 
@@ -381,7 +381,7 @@ view: odds_cleaned {
         THEN NULL
         WHEN ${TABLE}.home_{{ secondary_book._parameter_value }}_odds LIKE '%PK%'
         THEN 0.0
-        ELSE CAST(${TABLE}.home_{{ secondary_book._parameter_value }}_odds as FLOAT64)
+        ELSE SAFE_CAST(${TABLE}.home_{{ secondary_book._parameter_value }}_odds as FLOAT64)
         END ;;
     value_format_name: decimal_0
   }
@@ -394,7 +394,7 @@ view: odds_cleaned {
         THEN NULL
         WHEN ${TABLE}.away_{{ secondary_book._parameter_value }}_line LIKE '%PK%'
         THEN 0.0
-        ELSE CAST(${TABLE}.away_{{ secondary_book._parameter_value }}_line as FLOAT64)
+        ELSE SAFE_CAST(${TABLE}.away_{{ secondary_book._parameter_value }}_line as FLOAT64)
         END ;;
   }
 
@@ -406,7 +406,7 @@ view: odds_cleaned {
         THEN NULL
         WHEN ${TABLE}.away_{{ secondary_book._parameter_value }}_odds LIKE '%PK%'
         THEN 0.0
-        ELSE CAST(${TABLE}.away_{{ secondary_book._parameter_value }}_odds as FLOAT64)
+        ELSE SAFE_CAST(${TABLE}.away_{{ secondary_book._parameter_value }}_odds as FLOAT64)
         END ;;
     value_format_name: decimal_0
   }
