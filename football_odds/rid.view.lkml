@@ -8,7 +8,7 @@ view: rid {
     parameter: question {
       type: unquoted
       allowed_value: {
-        label: "In an unfamiliar city, for a moment I thought I had it, but then it was stolen right away from me."
+        label: "In a city that is not our own, for a moment I thought I had it, but then it was stolen right away from me."
         value: "1"
       }
       allowed_value: {
@@ -49,7 +49,7 @@ view: rid {
           THEN 1
           WHEN {{ question._parameter_value }} = 2 AND {{ answer._parameter_value }} IN ('babe','governors island','gareth emery')
           THEN 2
-          WHEN {{ question._parameter_value }} = 3 AND {{ answer._parameter_value }} IN ('the city bakery','croissant','walking tour','cretzel')
+          WHEN {{ question._parameter_value }} = 3 AND {{ answer._parameter_value }} IN ('the city bakery','croissant','walking tour','cretzel','city bakery')
           THEN 3
           WHEN {{ question._parameter_value }} = 4 AND {{ answer._parameter_value }} IN ('homeless','dc','washington dc','homeless man')
           THEN 4
@@ -63,14 +63,14 @@ view: rid {
           END
       ;;
       html:
-      {% if {{value}} == 1 %} <img src="https://www.evernote.com/l/An_Q5lQJYmpHGqvHLVcJoV2rJiIOEsYZSncB/image.jpg" height=100% width="auto">
-      {% elsif {{value}} == 2 %} <img src="https://www.evernote.com/l/An8P5kGEYW5A_phzGZYri-L9rrsepX6nTOEB/image.jpg" height=100% width="auto">
-      {% elsif {{value}} == 3 %} <img src="https://www.evernote.com/l/An8lFunp5ExFkbiOWFhyYfvNW5T-JHqiKX4B/image.jpg" height=100% width="auto">
-      {% elsif {{value}} == 4 %} <img src="https://www.evernote.com/l/An-KOBJrvrhHMb-Dut3xCzNR79yo2uHJ98gB/image.jpg" height=100% width="auto">
-      {% elsif {{value}} == 5 %} <img src="https://www.evernote.com/l/An-TWbY_H9ZDN6YyUCAuyaAamnnM0tmwP-MB/image.jpg" height=100% width="auto">
-      {% elsif {{value}} == 6 %} <img src="https://www.evernote.com/l/An-nijN-t_FK5Ycj2whA68fZNrQvNTeQoakB/image.jpg" height=100% width="auto">
-      {% elsif {{value}} == 7 %} <img src="https://www.evernote.com/l/An-V9cE9zZZF-qol-tlHrsAXneoBgLQDjxgB/image.jpg" height=100% width="auto">
-      {% else %} <font size="50"><strong>Sorry! Try again!</strong></font>
+      {% if {{value}} == 1 %} <img src="https://www.evernote.com/l/An_Q5lQJYmpHGqvHLVcJoV2rJiIOEsYZSncB/image.jpg" height="80%" width="auto">
+      {% elsif {{value}} == 2 %} <img src="https://www.evernote.com/l/An8P5kGEYW5A_phzGZYri-L9rrsepX6nTOEB/image.jpg" height="80%" width="auto">
+      {% elsif {{value}} == 3 %} <img src="https://www.evernote.com/l/An8lFunp5ExFkbiOWFhyYfvNW5T-JHqiKX4B/image.jpg" height="80%" width="auto">
+      {% elsif {{value}} == 4 %} <img src="https://www.evernote.com/l/An-KOBJrvrhHMb-Dut3xCzNR79yo2uHJ98gB/image.jpg" height="30%" width="30%">
+      {% elsif {{value}} == 5 %} <img src="https://www.evernote.com/l/An-TWbY_H9ZDN6YyUCAuyaAamnnM0tmwP-MB/image.jpg" height="50%" width="50%">
+      {% elsif {{value}} == 6 %} <img src="https://www.evernote.com/l/An-nijN-t_FK5Ycj2whA68fZNrQvNTeQoakB/image.jpg" height="80%" width="auto">
+      {% elsif {{value}} == 7 %} <img src="https://www.evernote.com/l/An-V9cE9zZZF-qol-tlHrsAXneoBgLQDjxgB/image.jpg" height="80%" width="auto">
+      {% else %} <p style="font-size: 150%;"><strong>Sorry! Try again!</strong></p>
       {% endif %}
 
 
