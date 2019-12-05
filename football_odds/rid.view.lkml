@@ -55,9 +55,9 @@ view: rid {
           THEN 4
           WHEN {{ question._parameter_value }} = 5 AND {{ answer._parameter_value }} IN ('little girl','kid','little kid','disney','disney world')
           THEN 5
-          WHEN {{ question._parameter_value }} = 6 AND {{ answer._parameter_value }} IN ('mason','engagement','dining table','hudson valley')
+          WHEN {{ question._parameter_value }} = 6 AND {{ answer._parameter_value }} IN ('engagement','dining table','hudson valley')
           THEN 6
-          WHEN {{ question._parameter_value }} = 7 AND {{ answer._parameter_value }} IN ('mott','girlfriend','girl friend','mott street','mott st')
+          WHEN {{ question._parameter_value }} = 7 AND {{ answer._parameter_value }} IN ('mott','mott street','mott st')
           THEN 7
           ELSE 8
           END
